@@ -58,7 +58,7 @@
 				  </div>
 				  <div class="form-group">
 				    <label for="pwd">Password:</label>
-				    <input type="password" class="form-control" name="pwd">
+				    <input type="password" class="form-control" name="password">
 				  </div>
 				  <div class="form-group">
 				  	<label>Type</label>
@@ -70,7 +70,7 @@
 				  </div>
 				  <div class="form-group">
 					  <label for="qul">Qualification:</label>
-					  <textarea class="form-control" rows="3" id="qualification"></textarea>
+					  <textarea class="form-control" rows="3" name="qualification"></textarea>
 				  </div>
 				  <button type="submit" class="btn btn-default">Submit</button>
 				</form>
