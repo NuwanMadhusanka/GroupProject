@@ -1,0 +1,86 @@
+@charset "ISO-8859-1";
+body{
+	font-family: "Times New Roman", Times, serif;
+	color: white;
+	font-weight: bold;
+}
+
+h3{
+	font-style: bold;
+	color: white;
+}
+
+a{
+	color: white;
+}
+
+#bar{
+	background-color: black;
+}
+
+h1{
+	color: orange;
+}
+
+#content{
+	height :850px;
+	background-image: url("1.jpg");
+}
+
+.boxForm{
+	background-color: white;
+	color: black;
+	border: solid 1px white;
+	width: 550px;
+	height: 750px;
+	padding: 20px;
+	margin-left: 400px;
+	margin-top:30px;
+	border-radius: 10px;
+}
+
+select#soflow, select#soflow-color {
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   margin: 20px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 300px;
+}
+
+/*Register page select Element*/
+select#soflow-color {
+   color: black;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#779126, #779126 40%, #779126);
+   background-color: #c0c0c0;
+   -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+   padding-left: 15px;
+}
+
+#title{
+	border: 1px solid white;
+	border-radius:5px;
+	background-color: white;
+	color:blue !important;
+	width: 250px;
+	padding:5px;
+}
+
+#title h3{
+	color: blue;
+}
+
