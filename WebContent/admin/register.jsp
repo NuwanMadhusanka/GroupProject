@@ -4,8 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <title>Register</title>
     <!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
+</head>
 
 <body>
 

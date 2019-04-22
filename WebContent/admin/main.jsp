@@ -3,9 +3,13 @@
  
 <!DOCTYPE html>
 <html lang="en">
-
+	
+<head>
+    <title>Main</title>
     <!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
+
+</head>
 
 <body>
 

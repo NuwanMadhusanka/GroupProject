@@ -1,0 +1,45 @@
+body{
+
+}
+
+/*Part 1 styles*/
+
+#part1{
+	background-color: #243238;
+	height: 60px;
+}
+
+#part1 h3{
+	color: white;
+	font-weight: bold;
+	list-style: 60px;
+}
+
+#socialmedia{
+	line-height: 60px;
+}
+
+#login{
+	line-height: 60px;
+}
+
+/*Finish part 1 style*/
+
+/*Part 2*/
+
+#part2{
+	background-color: #344046;
+}
+
+#p2box{
+	width: 220px;
+	margin-left: 0px;
+	margin-right: 0px;
+	
+}
+
+#part2 h3{
+	font-weight: bold;
+}
+
+/*Finish part 2*/
