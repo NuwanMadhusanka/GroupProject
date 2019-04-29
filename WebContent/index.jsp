@@ -4,10 +4,8 @@
 <html>
 <head>
 	<title>DRIVO</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<!-- Head part -->
+	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<link rel="stylesheet" type="text/css" href="css/index.css"> 
 </head>
 <body>
@@ -25,7 +23,7 @@
 					<a href="#" class="btn btn-success" title="Whatsapp"><i class="fab fa-whatsapp"></i></a>
 				</div>
 				<div class="col-md-1" id="login">
-					<a href="#" class="btn btn-default" title="Login"><i class="fas fa-sign-in-alt"></i></i></a>
+					<a href="login.jsp" class="btn btn-default" title="Login"><i class="fas fa-sign-in-alt"></i></i></a>
 				</div>
 			</div>
 		</div>

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,23 +15,23 @@ import com.gp.service.DB;
 import com.gp.service.Functions;
 
 
-@WebServlet("/adminstaff_register_action")
-public class AdminStaffRegisterAction extends HttpServlet {
+@WebServlet("/instructorstaff_register_action")
+public class InstructorStaffRegisterAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		//1.Get data from "adminStaff/register.jsp"
+		//1.Get data from "instructor/register.jsp"
 		String name=request.getParameter("name");
 		String nic=request.getParameter("nic");
 		String tel=request.getParameter("tel");
 		String address=request.getParameter("address");
-		String type=request.getParameter("type");
 		String email=request.getParameter("email");
 		String pwd=request.getParameter("password");
-		String qul=request.getParameter("qualification");
+		String lic=request.getParameter("licence");
+		
+		System.out.println(lic);
 		
 		//2.Do validation
 		String error="";
@@ -57,16 +56,13 @@ public class AdminStaffRegisterAction extends HttpServlet {
 			error+="Address Can't be empty!<br>";
 		}
 		
-		if(type.equals("0")) {
-			error+="Select the type!<br>";
-		}
 		
 		if(pwd.length()<8) {
 			error+="Password must be 8 charecter or more!<br>";
 		}
 		
-		if(qul.equals("")) {
-			error+="Insert at leat one qulification!";
+		if(!Functions.lic(lic)) {
+			error+="Enter Correct Licence Number";
 		}
 		
 		
@@ -97,21 +93,16 @@ public class AdminStaffRegisterAction extends HttpServlet {
 					String empId=rs.getString("emp_id");
 					
 					//insert data to administrative_staff table
-					sql="INSERT INTO administrative_staff (emp_id,type,qulification) VALUES (?,?,?)";
+					sql="INSERT INTO instructor (emp_id,licence) VALUES (?,?)";
 					ps=con.prepareStatement(sql);
 					ps.setString(1,empId);
-					ps.setString(2, type);
-					ps.setString(3, qul);
+					ps.setString(2, lic);
 					
 					ps.executeUpdate();
 					
 					//get roll
-					String role="0";
-					if(type.equals("1")) {
-						role="2";
-					}else {
-						role="3";
-					}
+					String role="4";
+					
 					
 					//insert data to user table
 					
@@ -124,16 +115,15 @@ public class AdminStaffRegisterAction extends HttpServlet {
 					
 					ps.executeUpdate(); 
 					
-					response.sendRedirect("staff/list.jsp?msg=success");
+					response.sendRedirect("instructor/list.jsp?msg=success");
 				}
 				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else {
-			response.sendRedirect("admin_staff/register.jsp?msg="+error);
+			response.sendRedirect("instructor/register.jsp?msg="+error);
 		}
-
 	}
-		
+
 }

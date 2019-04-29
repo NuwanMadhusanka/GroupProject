@@ -70,4 +70,23 @@ public class Functions {
 		return isValid;
 	}
 	
+	//License number validation function
+		public static boolean lic(String num) {
+			int len=num.length();
+			if(len!=8) {
+				return false;
+			}
+			
+			char[] arr=num.toCharArray();
+			for(int i=1 ; i<=7 ; i++) {
+				if(!Character.isDigit(arr[i])) {
+					return false;
+				}
+			}
+			if(!Character.isDigit(arr[0])) {
+				return true;
+			}
+			return false;
+		}
+	
 }

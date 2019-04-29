@@ -1,0 +1,20 @@
+@charset "ISO-8859-1";
+
+
+
+#content{
+	height :1000px;
+	background-image: url("1.jpg");
+}
+
+.jumbotron{
+	margin: 80px;
+	background-color: rgba(255,255,255,0.7);
+	color: black !important;
+}
+
+caption {
+	color: blue;
+	font-weight: bold;
+	font-size: 20px;
+}
