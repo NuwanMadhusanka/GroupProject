@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Admin Staff Details</title>
 	<!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<%@ include file="../WEB-INF/templates/header.jsp" %>

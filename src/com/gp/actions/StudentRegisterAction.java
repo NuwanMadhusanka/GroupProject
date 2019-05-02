@@ -67,17 +67,19 @@ public class StudentRegisterAction extends HttpServlet {
 						Connection con=DB.getConnection();
 						
 						//insert data to student
-						String sql="INSERT INTO student (name,nic,tel,address) VALUES (?,?,?,?)";
+						String sql="INSERT INTO student (name,nic,tel,address,exam_date,trial_date) VALUES (?,?,?,?,?,?)";
 						PreparedStatement ps=con.prepareStatement(sql);
 						
 						ps.setString(1, name);
 						ps.setString(2, nic);
 						ps.setString(3, tel);
 						ps.setString(4, address);
+						ps.setString(5,examDate);
+						ps.setString(6,trialDate);
 						
 						ps.executeUpdate();
 						
-						//get Employee id
+						//get Student id
 						sql="SELECT stu_id FROM student WHERE nic=?";
 						ps=con.prepareStatement(sql);
 						ps.setString(1,nic);
@@ -88,7 +90,7 @@ public class StudentRegisterAction extends HttpServlet {
 							
 							//insert data to user table
 									
-							sql="INSERT INTO user (email,password,roll,stu_id,reg_date,status) VALUES (?,md5(?),?,?,now(),1)";
+							sql="INSERT INTO user (email,password,role,stu_id,reg_date,status) VALUES (?,md5(?),?,?,now(),1)";
 							ps=con.prepareStatement(sql);
 							ps.setString(1, email);
 							ps.setString(2, pwd);

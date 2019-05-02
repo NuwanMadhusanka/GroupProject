@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Instructor Details</title>
+	<title>Student Details</title>
 	<!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
@@ -48,7 +48,7 @@
 	    			<div class="jumbotron">
 	    			
 	    				<table class="table">
-	    					<caption>Instructor Details</caption>
+	    					<caption>Student Details</caption>
 	    					<tr>
 	    						<th>Name</th>
 	    						<th>Status</th>
@@ -57,18 +57,17 @@
 	    					
 	    						<%
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT user.id,user.status,staff.name FROM staff,user WHERE staff.emp_id=user.emp_id AND role=4";
+	    						String sql="SELECT user.id,user.status,student.name FROM student,user WHERE student.stu_id=user.stu_id";
 	    						Statement st=con.createStatement();
 	    						ResultSet rs=st.executeQuery(sql);
 	    						while(rs.next()){
 	    							String id=rs.getString("id");
 	    							String name=rs.getString("name");
 	    							String status=rs.getString("status");
-	    							
+	    								
 	    						%>
 	    						<tr>
 	    						<td><%=name %></td>
-	    	
 	    						<td>
 		    						<%
 									if(status.equals("1")){
@@ -79,7 +78,7 @@
 									%>
 	    						</td>
 	    						<td>
-		    						<a href="listadvance.jsp?id=<%=id %>" class="btn btn-info"><i class="fas fa-eye" title="Advanced"></i></a>
+		    						<a href="<%=UrlHelper.base_url() %>student/listadvance.jsp?id=<%=id %>" class="btn btn-info"><i class="fas fa-eye" title="Advanced"></i></a>
 									<%
 									if(status.equals("1")){
 										out.println("<a href='../user_blcklist_action?id="+id+"' class='btn btn-danger' title='BlackList' ><i class='fas fa-window-close'></i></a>");
