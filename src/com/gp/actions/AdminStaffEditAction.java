@@ -111,7 +111,7 @@ public class AdminStaffEditAction extends HttpServlet {
 							ps.executeUpdate();
 							
 //							//insert data to administrative_staff table
-							sql="UPDATE administrative_staff SET qulification=? WHERE emp_id=?";
+							sql="UPDATE administrative_staff SET qualification=? WHERE emp_id=?";
 							ps=con.prepareStatement(sql);
 							ps.setString(1,qul);
 							ps.setString(2, empId);

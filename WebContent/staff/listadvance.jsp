@@ -93,7 +93,7 @@
 	    								if(roleNum.equals("4")){
 	    									lic=rs1.getString("licence");
 	    								}else{
-	    									qul=rs1.getString("qulification");
+	    									qul=rs1.getString("qualification");
 	    								}
 	    							}
 	    						

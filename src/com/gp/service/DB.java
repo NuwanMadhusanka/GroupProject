@@ -7,7 +7,7 @@ public class DB {
 	
 	public static Connection getConnection() throws Exception {
 		
-		String url="jdbc:mysql://localhost/dbleaners1";
+		String url="jdbc:mysql://localhost/project";
 		Class.forName("com.mysql.jdbc.Driver");
 		
 		Connection con=DriverManager.getConnection(url,"root","1234");

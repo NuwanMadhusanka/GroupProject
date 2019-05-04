@@ -97,7 +97,7 @@ public class AdminStaffRegisterAction extends HttpServlet {
 					String empId=rs.getString("emp_id");
 					
 					//insert data to administrative_staff table
-					sql="INSERT INTO administrative_staff (emp_id,type,qulification) VALUES (?,?,?)";
+					sql="INSERT INTO administrative_staff (emp_id,type,qualification) VALUES (?,?,?)";
 					ps=con.prepareStatement(sql);
 					ps.setString(1,empId);
 					ps.setString(2, type);

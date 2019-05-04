@@ -62,7 +62,7 @@ public class LoginAction extends HttpServlet {
 						response.sendRedirect("login.jsp?msg=Access Denied!");
 					}
 				}else {
-					response.sendRedirect("login.jsp?msg=Email or Password Incorrect");
+					response.sendRedirect("login.jsp?msg=Your haven't account.Please inform the administrator.");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

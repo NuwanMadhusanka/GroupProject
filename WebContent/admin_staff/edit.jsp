@@ -78,13 +78,13 @@
 	    				email=rs.getString("email");
 	    				pws=rs.getString("password");
 	    				nic=rs.getString("nic");
-	    				qul=rs.getString("qulification");
+	    				qul=rs.getString("qualification");
 	    			}
 	    			%>
 	    			<form action="../adminstaff_edit_action" method="post">
 	    			  <div class="form-group">
 					    <label for="usr">ID:</label>
-					    <input type="text" class="form-control" name="id" value="<%=id %>" readonly="readonly">
+					    <input type="text" class="form-control " name="id" value="<%=id %>" readonly="readonly">
 					  </div>
 					  
 					  <div class="form-group">
