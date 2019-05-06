@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,6 +32,25 @@ public class StudentRegisterAction extends HttpServlet {
 				String pwd=request.getParameter("password");
 				String examDate=request.getParameter("examdate");
 				String trialDate=request.getParameter("trialdate");
+				
+				//get package details
+				ArrayList<String> pacId=new ArrayList<String>();//Store package id of student's following packages
+				try {
+				   Connection con1=DB.getConnection();
+				   String sql1="SELECT pac_id,title FROM package";
+				   Statement st1=con1.createStatement();
+				   ResultSet rs1=st1.executeQuery(sql1);
+				   String packageId="";//pack==>package
+				   while(rs1.next()) {
+					   packageId=request.getParameter(rs1.getString("title"));
+					   if(packageId!=null) {
+						   pacId.add(packageId);
+						   //System.out.println(packageId);
+					   }
+				   }
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 				
 				
 				//2.Do validation
@@ -59,6 +80,9 @@ public class StudentRegisterAction extends HttpServlet {
 					error+="Password must be 8 charecter or more!<br>";
 				}
 					
+				if(pacId.size()==0) {
+					error+="Select at least one package!";
+				}
 				
 			
 				//3.Add data to DataBase
@@ -98,6 +122,15 @@ public class StudentRegisterAction extends HttpServlet {
 							ps.setString(4, stuId);
 							
 							ps.executeUpdate(); 
+							
+							//insert data to student_package table
+							sql="INSERT INTO student_package (stu_id,pac_id,join_date) VALUES (?,?,now())";
+							ps=con.prepareStatement(sql);
+							ps.setString(1,stuId);
+							for(int i=0 ; i<pacId.size() ; i++) {
+								ps.setString(2,pacId.get(i));
+								ps.execute();
+							}
 							
 							response.sendRedirect("student/list.jsp?msg=success");
 						}

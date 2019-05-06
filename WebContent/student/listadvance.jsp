@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.jasper.tagplugins.jstl.core.Url"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
@@ -53,6 +54,7 @@
 	    				<table class="table">
 	    					<caption>Private Details</caption>
 	    						<%
+	    						ArrayList<String> pacId=new ArrayList<String>();
 	    						String id=request.getParameter("id");
 	    						String stuId="";
 	    						String examDate="";
@@ -74,6 +76,17 @@
 	    							String password="*********";
 	    							examDate=rs.getString("exam_date");
 	    							trialDate=rs.getString("trial_date");
+	    							
+	    							//get package details
+	    							
+	    							sql="SELECT package.pac_id,package.title FROM package,student_package WHERE "+
+	    								"student_package.stu_id=? AND student_package.pac_id=package.pac_id";
+	    							ps=con.prepareStatement(sql);
+	    							ps.setString(1,stuId);
+	    							rs=ps.executeQuery();
+	    							while(rs.next()){
+	    								pacId.add(rs.getString("title"));
+	    							}
 		    						%>
 		    						<tr>
 		    							<th>Name:</th>
@@ -119,6 +132,16 @@
 		    					<th>TrialDate:</th>
 		    					<td><%=trialDate %></td>
 		    				</tr>
+		    				<%
+		    				for(int i=0 ; i<pacId.size() ; i++){
+		    				%>
+		    				<tr>
+		    					<th>Package <%=(i+1) %></th>
+		    					<th><%=pacId.get(i) %></th>
+		    				</tr>
+		    				<%
+		    				}
+		    				%>
 	    				</table>
 	    				
 	    			</div>

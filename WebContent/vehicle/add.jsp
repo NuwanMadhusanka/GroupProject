@@ -66,16 +66,12 @@
 					    <input type="text" class="form-control" name="number">
 					  </div>
 					   <div class="form-group">
-					    <label for="num">Model Year:</label>
-					    <input type="text" class="form-control" name="year">
-					  </div>
-					   <div class="form-group">
 					    <label for="num">Fuel Type:</label>
 					    <input type="text" class="form-control" name="fueltype">
 					  </div>
 					  <div class="form-group">
 					  	<label>Transmission</label>
-					  	<select name="type" id="soflow-color">
+					  	<select name="transmission" id="soflow-color">
 					  		<option value="0">Vehicle Transmission</option>
 					  		<option value="1">Manual</option>
 					  		<option value="2">Auto</option>
@@ -83,7 +79,7 @@
 					  </div>
 					  <div class="form-group">
 					  	<label>Category</label>
-					  	<select name="type" id="soflow-color">
+					  	<select name="category" id="soflow-color">
 					  		<option value="0">Select Category</option>
 					  		<%
 					  		Connection con=DB.getConnection();
@@ -97,6 +93,11 @@
 					  		<option value="<%=id%>"><%=category %></option>
 					  		<%} %>
 					  	</select>
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="num">Licence(document):</label>
+					    <input type="file" class="form-control" name="url">
 					  </div>
 					 
 					  <button type="submit" class="btn btn-default">Submit</button>

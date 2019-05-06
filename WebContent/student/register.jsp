@@ -1,3 +1,8 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="com.gp.service.DB"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  
@@ -70,7 +75,23 @@
 				    <label for="pwd">Password:</label>
 				    <input type="password" class="form-control" name="password">
 				  </div>
-				   <div class="form-group">
+				  
+				  <label>Packages:</label>
+				  <%
+				  Connection con=DB.getConnection();
+				  String sql="SELECT pac_id,title FROM package";
+				  Statement st=con.createStatement();
+				  ResultSet rs=st.executeQuery(sql);
+				  int count=0;
+				  while(rs.next()){
+					  String pacId=rs.getString("pac_id");
+					  String title=rs.getString("title");
+					  count++;
+				  %>
+				  <label class="checkbox-inline"><input type="checkbox" value="<%=pacId%>" name="<%=title%>"><%=title %></label>
+				  <%} %>
+				
+				  <div class="form-group">
 				    <label for="ed">Exam Date:</label>
 				    <input type="date" class="form-control" name="examdate">
 				  </div>

@@ -69,6 +69,11 @@ public class PackageAddAction extends HttpServlet {
 			error+="Select the vehicle Category!<br>";
 		}
 		
+		//validate auto/manual lessons
+		if(!manualFlag && !autoFlag) {
+			error+="Insert number of lessons(Manual/Auto)<br>";
+		}
+		
 		if(manualFlag) {
 			if(manualLes.equals("0")) {
 				error+="Enter Number of Manual lessons!";
@@ -92,6 +97,8 @@ public class PackageAddAction extends HttpServlet {
 				}
 			}
 		}
+		
+	
 		
 		//3.DB Connection
 		if(error.equals("")) {

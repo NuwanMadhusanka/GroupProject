@@ -1,6 +1,7 @@
+<%@page import="com.gp.service.UrlHelper"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" 
-	errorPage="WEB-INF/template/error.jsp"%>
+	errorPage="WEB-INF/templates/error.jsp"%>
 
 <!DOCTYPE html>
 <html>

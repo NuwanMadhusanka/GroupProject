@@ -77,6 +77,7 @@
 	    				email=rs.getString("email");
 	    				pws=rs.getString("password");
 	    				nic=rs.getString("nic");
+	    				
 	    			}
 	    			%>
 	    			<form action="../student_edit_action" method="post">
