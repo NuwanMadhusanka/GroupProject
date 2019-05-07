@@ -60,6 +60,22 @@ select#soflow-color {
 	display: inline-block;
 }
 
+/*Register student(student/register.jsp)*/
+#oneLineBlock{
+	display: inline-block;
+	background-color: #C9FFB7;
+	padding: 2px;
+	border:1px solid white;
+	border-radius: 2px;
+}
+
+#package{
+	margin-left: 20px;
+}
+
+#pactitle{
+	color: red;
+}
 
 /*form*/
 .jumbotron{

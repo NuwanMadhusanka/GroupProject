@@ -52,6 +52,18 @@ public class StudentRegisterAction extends HttpServlet {
 					e.printStackTrace();
 				}
 				
+				//select manual lesson and auto lesson with respect to selected package
+				ArrayList<String> transmission=new ArrayList<String>();
+				for(int i=0 ; i<pacId.size() ; i++) {
+					String tra=request.getParameter(pacId.get(i));
+					if(tra.equals("1")) {
+						transmission.add(i,"1");
+					}
+					if(tra.equals("2")) {
+						transmission.add(i,"2");
+					}
+				}
+				
 				
 				//2.Do validation
 				String error="";
@@ -124,11 +136,12 @@ public class StudentRegisterAction extends HttpServlet {
 							ps.executeUpdate(); 
 							
 							//insert data to student_package table
-							sql="INSERT INTO student_package (stu_id,pac_id,join_date) VALUES (?,?,now())";
+							sql="INSERT INTO student_package (stu_id,pac_id,transmission,join_date) VALUES (?,?,?,now())";
 							ps=con.prepareStatement(sql);
 							ps.setString(1,stuId);
 							for(int i=0 ; i<pacId.size() ; i++) {
 								ps.setString(2,pacId.get(i));
+								ps.setString(3,transmission.get(i));
 								ps.execute();
 							}
 							

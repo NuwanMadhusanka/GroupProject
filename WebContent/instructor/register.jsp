@@ -10,6 +10,7 @@
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/user_validate.js"></script>
 </head>
 
 <body>

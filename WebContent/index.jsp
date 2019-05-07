@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+ 
 	<title>DRIVO</title>
 	<!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>

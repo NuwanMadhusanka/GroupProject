@@ -15,6 +15,7 @@
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/register.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/user_validate.js"></script>
 </head>
 
 <body>
@@ -50,7 +51,7 @@
 	    			<h3>Registration Form</h3>
 	    		</div>
     		
-    			<form action="../student_register_action" method="post">
+    			<form action="../student_register_action" method="post" name="myForm" onsubmit="return validateFrom()">
 				  <div class="form-group">
 				    <label for="usr">Name:</label>
 				    <input type="text" class="form-control" name="name">
@@ -76,21 +77,46 @@
 				    <input type="password" class="form-control" name="password">
 				  </div>
 				  
-				  <label>Packages:</label>
+				  <h5>Packages:</h5>
+				  <!-- Start row -->
+				  <div class="row">
 				  <%
 				  Connection con=DB.getConnection();
-				  String sql="SELECT pac_id,title FROM package";
+				  String sql="SELECT pac_id,title,auto_les,manual_les FROM package";
 				  Statement st=con.createStatement();
 				  ResultSet rs=st.executeQuery(sql);
-				  int count=0;
 				  while(rs.next()){
 					  String pacId=rs.getString("pac_id");
 					  String title=rs.getString("title");
-					  count++;
+					  int autoLes=Integer.parseInt(rs.getString("auto_les"));
+					  int manualLes=Integer.parseInt(rs.getString("manual_les"));
+					  
 				  %>
-				  <label class="checkbox-inline"><input type="checkbox" value="<%=pacId%>" name="<%=title%>"><%=title %></label>
-				  <%} %>
+				  	<div class="col-md-4">
+						  <div id="oneLineBlock">
+							  <label id="pactitle" class="checkbox-inline"><input type="checkbox" value="<%=pacId%>" name="<%=title%>"><%=title %></label>
+							  <%if(autoLes!=0 && manualLes!=0){ %>
+							  	<div class="radio" id="package">
+								  <label><input type="radio" name="<%=pacId%>" value="1">Manual</label>
+								</div>
+								<div class="radio" id="package">
+								  <label><input type="radio" name="<%=pacId%>" value="2">Auto</label>
+								</div>
+							  <%}else if(autoLes!=0){ %>
+							  	<div class="radio" id="package">
+								  <label><input type="radio" name="<%=pacId%>" value="2">Auto</label>
+								</div>
+							  <%}else if(manualLes!=0){ %>
+							  	<div class="radio" id="package">
+								  <label><input type="radio" name="<%=pacId%>" value="1">Manual</label>
+								</div>
+							  <%} %>
+						 </div>
+					</div>
 				
+				  <%} %>
+				 </div>
+				 <!-- Start row -->
 				  <div class="form-group">
 				    <label for="ed">Exam Date:</label>
 				    <input type="date" class="form-control" name="examdate">
