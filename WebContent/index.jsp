@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
- 
+ 	<meta charset="ISO-8859-1">
 	<title>DRIVO</title>
 	<!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>

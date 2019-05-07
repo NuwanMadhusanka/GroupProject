@@ -50,8 +50,15 @@
 				    </ul>
 				</li>
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("2")){ %>
-		 		<li><a href="<%=UrlHelper.base_url()%>student/register.jsp" title="Register Student">Register</a></li>
-		 		<li><a href="<%=UrlHelper.base_url()%>student/list.jsp" title="Student Details">Students</a></li>
+		 		<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Student
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				      <li><a href="<%=UrlHelper.base_url()%>student/register.jsp" title="Register Student">Register Student</a></li>
+		 			  <li><a href="<%=UrlHelper.base_url()%>student/list.jsp" title="Student Details">Student Details</a></li>
+				    </ul>
+				</li>
+		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("3")){%>
 		 		<li><a href="<%=UrlHelper.base_url()%>instructor/register.jsp" title="Register Instructor">Register</a></li>
 		 		<li><a href="<%=UrlHelper.base_url()%>instructor/list.jsp" title="Instructor Details">Instructor</a></li>

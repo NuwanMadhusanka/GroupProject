@@ -54,7 +54,9 @@
 	    				<table class="table">
 	    					<caption>Private Details</caption>
 	    						<%
-	    						ArrayList<String> pacId=new ArrayList<String>();
+	    						ArrayList<String> pacName=new ArrayList<String>();//Store packages name
+	    						ArrayList<String> pacId=new ArrayList<String>();//store package id
+	    						ArrayList<Double> pacPrice=new ArrayList<Double>();//store pacage price
 	    						String id=request.getParameter("id");
 	    						String stuId="";
 	    						String examDate="";
@@ -79,14 +81,17 @@
 	    							
 	    							//get package details
 	    							
-	    							sql="SELECT package.pac_id,package.title FROM package,student_package WHERE "+
+	    							sql="SELECT package.pac_id,package.title,package.price FROM package,student_package WHERE "+
 	    								"student_package.stu_id=? AND student_package.pac_id=package.pac_id";
 	    							ps=con.prepareStatement(sql);
 	    							ps.setString(1,stuId);
 	    							rs=ps.executeQuery();
 	    							while(rs.next()){
-	    								pacId.add(rs.getString("title"));
+	    								pacName.add(rs.getString("title"));
+	    								pacId.add(rs.getString("pac_id"));
+	    								pacPrice.add(Double.parseDouble(rs.getString("price")));
 	    							}
+	    							
 		    						%>
 		    						<tr>
 		    							<th>Name:</th>
@@ -122,6 +127,7 @@
 	    				%>
 	    				<a href="<%=UrlHelper.base_url() %>student/edit.jsp?id=<%=id %>" class="btn btn-default">Edit</a>
 	    				<%} %>
+	    				
 	    				<table class="table">
 	    					<caption>Course Details</caption>
 	    					<tr>
@@ -133,17 +139,70 @@
 		    					<td><%=trialDate %></td>
 		    				</tr>
 		    				<%
-		    				for(int i=0 ; i<pacId.size() ; i++){
+		    				for(int i=0 ; i<pacName.size() ; i++){
 		    				%>
 		    				<tr>
 		    					<th>Package <%=(i+1) %></th>
-		    					<th><%=pacId.get(i) %></th>
+		    					<th><%=pacName.get(i) %></th>
 		    				</tr>
 		    				<%
 		    				}
 		    				%>
 	    				</table>
 	    				
+	    				<h3 id="payment">Payment Details</h3>
+	    				<%
+	    				for(int i=0 ; i<pacName.size() ; i++){
+	    				
+	    				%>
+	    				<table class="table">
+	    					<caption><%=(i+1)+")"+pacName.get(i) %></caption>
+	    					<tr>
+	    						<th>Date</th>
+	    						<th>Payment</th>
+	    					</tr>
+	    					<%
+	    					int count=0;
+	    					sql="SELECT * FROM course_fee WHERE pac_id=? AND stu_id=?";
+	    					ps=con.prepareStatement(sql);
+	    					ps.setString(1,pacId.get(i));
+	    					ps.setString(2,stuId);
+	    					rs=ps.executeQuery();
+	    					while(rs.next()){
+	    						String date=rs.getString("date");
+	    						String amount=rs.getString("amount");
+	    						count+=Double.parseDouble(amount);
+	    					%>
+	    					<tr>
+	    						<td><%=date %></td>
+	    						<td><%=amount %></td>
+	    					</tr>
+	    					<%} %>
+	    				</table>
+	    				<table class="table">
+	    					<tr>
+	    						<th>Package Fee:</th>
+	    						<td><%=pacPrice.get(i)%></td>
+	    					</tr>
+	    					<tr>
+	    						<th>Total Payment:</th>
+	    						<td><%=count%></td>
+	    					</tr>
+	    					<tr class="warning">
+	    						<th>Balance:</th>
+	    						<td><%=(pacPrice.get(i)-count)>=0?(pacPrice.get(i)-count):"0" %></td>
+	    					</tr>
+	    				</table>
+	    				<form action="../payment_add_action" method="post">
+						  <div class="form-group">
+						    <input type="hidden" class="form-control"  name="stu_id" value="<%=stuId%>">
+						  </div>
+						  <div class="form-group">
+						    <input type="hidden" class="form-control"  name="pac_id" value="<%=pacId.get(i)%>">
+						  </div>
+						  <button type="submit" class="btn btn-default">Add Payment</button>
+						</form> 
+	    				<%} %>
 	    			</div>
 	    			
 	    			
