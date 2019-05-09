@@ -41,7 +41,7 @@
     		<!-- Show message  -->
     		<%@ include file="../WEB-INF/templates/msg.jsp" %>
     		
-    		<div class="boxForm">
+    		<div class="jumbotron">
     			<div id="title">
 	    			<h3>Registration Form</h3>
 	    		</div>

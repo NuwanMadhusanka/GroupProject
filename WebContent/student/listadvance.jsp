@@ -162,7 +162,7 @@
 	    						<th>Payment</th>
 	    					</tr>
 	    					<%
-	    					int count=0;
+	    					Double count=0.0;
 	    					sql="SELECT * FROM course_fee WHERE pac_id=? AND stu_id=?";
 	    					ps=con.prepareStatement(sql);
 	    					ps.setString(1,pacId.get(i));
@@ -193,14 +193,22 @@
 	    						<td><%=(pacPrice.get(i)-count)>=0?(pacPrice.get(i)-count):"0" %></td>
 	    					</tr>
 	    				</table>
-	    				<form action="../payment_add_action" method="post">
+	    				
+	    				<form action="../payment/add.jsp" method="post">
 						  <div class="form-group">
-						    <input type="hidden" class="form-control"  name="stu_id" value="<%=stuId%>">
+						    <input type="hidden" class="form-control"  name="stuId" value="<%=stuId%>">
 						  </div>
 						  <div class="form-group">
-						    <input type="hidden" class="form-control"  name="pac_id" value="<%=pacId.get(i)%>">
+						    <input type="hidden" class="form-control"  name="pacId" value="<%=pacId.get(i)%>">
 						  </div>
-						  <button type="submit" class="btn btn-default">Add Payment</button>
+						  <div class="form-group">
+						    <input type="hidden" class="form-control"  name="count" value="<%=count%>">
+						  </div>
+						  <%
+		    				if(role.equals("2")){
+		    				%>
+		    				<button type="submit" class="btn btn-default">Add Payment</button>
+	    				  <%} %> 
 						</form> 
 	    				<%} %>
 	    			</div>

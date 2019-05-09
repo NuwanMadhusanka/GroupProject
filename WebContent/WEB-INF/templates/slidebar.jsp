@@ -14,6 +14,7 @@
 				    <ul class="dropdown-menu">
 				       <li><a href="<%=UrlHelper.base_url()%>admin_staff/register.jsp" title="Register Administrative Staff">Register</a></li>
 				      <li><a href="<%=UrlHelper.base_url()%>staff/list.jsp" title="View Staff Details">Staff Details</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>complain/admin_list.jsp">Complain Details</a></li>
 				    </ul>
 				</li>
 		       
@@ -23,10 +24,8 @@
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicle
 				    <span class="caret"></span></a>
 				    <ul class="dropdown-menu">
-				      <li><a href="<%=UrlHelper.base_url()%>vehicle/add.jsp">New Vehicle</a></li>
-				      <li><a href="<%=UrlHelper.base_url()%>vehicle/list.jsp">Vehicle Details</a></li>
-				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/add.jsp">New Vehicle Category</a></li>
-				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/list.jsp">Vehicle Category Details</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>vehicle/list.jsp">Vehicle Details</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>vehicle_category/list.jsp">Vehicle Category Details</a></li>
 				    </ul>
 				</li>
 		        
@@ -49,6 +48,7 @@
 				      <li><a href="#">Salary</a></li> 
 				    </ul>
 				</li>
+				
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("2")){ %>
 		 		<li class="dropdown">
 				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Student
@@ -58,10 +58,45 @@
 		 			  <li><a href="<%=UrlHelper.base_url()%>student/list.jsp" title="Student Details">Student Details</a></li>
 				    </ul>
 				</li>
+				<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Complain
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				     	<li><a href="<%=UrlHelper.base_url()%>complain/add.jsp">Add Complain</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>complain/staff_list.jsp">Complain Details</a></li>
+				    </ul>
+				</li>
 		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("3")){%>
-		 		<li><a href="<%=UrlHelper.base_url()%>instructor/register.jsp" title="Register Instructor">Register</a></li>
-		 		<li><a href="<%=UrlHelper.base_url()%>instructor/list.jsp" title="Instructor Details">Instructor</a></li>
+		 		<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Instructor
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				      <li><a href="<%=UrlHelper.base_url()%>instructor/register.jsp" title="Register Instructor">Register</a></li>
+		 			  <li><a href="<%=UrlHelper.base_url()%>instructor/list.jsp" title="Instructor Details">Instructor</a></li>
+				    </ul>
+				</li>
+				
+				<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Vehicle
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				      <li><a href="<%=UrlHelper.base_url()%>vehicle/add.jsp">New Vehicle</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>vehicle/list.jsp">Vehicle Details</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/add.jsp">New Vehicle Category</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/list.jsp">Vehicle Category Details</a></li>
+				    </ul>
+				</li>
+				
+				<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Complain
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				     	<li><a href="<%=UrlHelper.base_url()%>complain/add.jsp">Add Complain</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>complain/staff_list.jsp">Complain Details</a></li>
+				    </ul>
+				</li>
+		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("4")){%>
 		 
 		 <%}else{%>
