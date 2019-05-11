@@ -100,23 +100,6 @@
 					    <input type="file" class="form-control" name="url">
 					  </div>
 					  
-					   <div class="form-group">
-					  	<label>Instructor(Assign Driver)</label>
-					  	<select name="instructor" id="soflow-color">
-					  		<option value="0">Select Instructor</option>
-					  		<%
-					  		sql="SELECT staff.name,instructor.ins_id FROM instructor,staff WHERE "+
-					  			"instructor.emp_id=staff.emp_id AND ins_id NOT IN(SELECT ins_id FROM vehicle)";
-					  		st=con.createStatement();
-					  		rs=st.executeQuery(sql);
-					  		while(rs.next()){
-					  			String id=rs.getString("ins_id");
-					  			String name=rs.getString("name");
-					  		%>
-					  		<option value="<%=id%>"><%=name %></option>
-					  		<%} %>
-					  	</select>
-					  </div>
 					 
 					  <button type="submit" class="btn btn-default">Submit</button>
 					</form>

@@ -56,6 +56,7 @@ public class UserBlackListAction extends HttpServlet {
 				}else if(roleCurrent.equals("2")) {
 					response.sendRedirect("student/list.jsp?msg=success");
 				}else if(roleCurrent.equals("3")) {
+					
 					response.sendRedirect("instructor/list.jsp?msg=success");
 				}
 			}	

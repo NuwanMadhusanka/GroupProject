@@ -87,6 +87,7 @@
 				      <li><a href="<%=UrlHelper.base_url()%>vehicle/list.jsp">Vehicle Details</a></li>
 				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/add.jsp">New Vehicle Category</a></li>
 				      <li><a href="<%=UrlHelper.base_url()%>vehicle_category/list.jsp">Vehicle Category Details</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>vehicle/list_assign.jsp">Vehicle-Instructor Assign Details</a></li>
 				    </ul>
 				</li>
 				

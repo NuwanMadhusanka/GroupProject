@@ -27,7 +27,7 @@ public class VehicleAddAction extends HttpServlet {
 		String transmossion=request.getParameter("transmission");
 		String category=request.getParameter("category");
 		String doc=request.getParameter("lic");
-		String insId=request.getParameter("instructor");
+		
 		
 		//validate
 		String error="";
@@ -49,17 +49,14 @@ public class VehicleAddAction extends HttpServlet {
 		if(category.equals("0")) {
 			error+="Select Valid Category<br>";
 		}
-		if(insId.equals("")) {
-			error+="Select the Instructor";
-		}
 		
 		
 		//db
 		if(error.equals("")) {
 			try {
 				Connection con=DB.getConnection();
-				String sql="INSERT INTO vehicle (brand,model,number,fuel_type,transmission,document_lic,cat_id,ins_id) "+
-						    "VALUES (?,?,?,?,?,?,?,?)";
+				String sql="INSERT INTO vehicle (brand,model,number,fuel_type,transmission,document_lic,cat_id) "+
+						    "VALUES (?,?,?,?,?,?,?)";
 				PreparedStatement ps=con.prepareStatement(sql);
 				ps.setString(1,brand);
 				ps.setString(2,model);
@@ -68,7 +65,7 @@ public class VehicleAddAction extends HttpServlet {
 				ps.setString(5,transmossion);
 				ps.setString(6,doc);
 				ps.setString(7,category);
-				ps.setString(8,insId);
+				
 				
 				ps.executeUpdate();
 				response.sendRedirect("vehicle/list.jsp?msg=success");
