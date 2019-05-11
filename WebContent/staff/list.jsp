@@ -47,6 +47,22 @@
 	    		<div class="container">
 	    			<div class="jumbotron">
 	    			
+	    				<nav class="navbar navbar-default">
+	    					
+	    					<form class="navbar-form navbar-left" action="/action_page.php">
+			    					
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="user name">
+									<div class="input-group-btn">
+										<button class="btn btn-default" type="submit">
+											   <i class="glyphicon glyphicon-search"></i>
+										</button>
+									</div>
+								</div>
+							</form> 
+	    				</nav>
+	    			
+	    			
 	    				<table class="table">
 	    					<caption>Staff Details</caption>
 	    					<tr>
@@ -96,7 +112,10 @@
 									}else{
 										out.println("<a href='../user_active_action?id="+id+"' class='btn btn-success' title='Membership'><i class='fas fa-check'></i></a>");
 									}
-									%>					
+									%>
+									<%if(!role.equals("Instructor")){ %>
+										<a href="<%=UrlHelper.base_url() %>leave/add.jsp?id=<%=id %>" class="btn btn-warning"  title="Record Leave"><i class="fas fa-marker"></i></a>
+									<%} %>					
 	    						</td>
 	    						</tr>
 	    						<%} %>

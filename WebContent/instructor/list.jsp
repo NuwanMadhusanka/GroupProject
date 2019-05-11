@@ -86,7 +86,8 @@
 									}else{
 										out.println("<a href='../user_active_action?id="+id+"' class='btn btn-success' title='Membership'><i class='fas fa-check'></i></a>");
 									}
-									%>					
+									%>
+									<a href="<%=UrlHelper.base_url() %>leave/add.jsp?id=<%=id %>" class="btn btn-warning"  title="Record Leave"><i class="fas fa-marker"></i></a>					
 	    						</td>
 	    						</tr>
 	    						<%} %>

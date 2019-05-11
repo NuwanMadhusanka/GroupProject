@@ -14,7 +14,8 @@
 				    <ul class="dropdown-menu">
 				       <li><a href="<%=UrlHelper.base_url()%>admin_staff/register.jsp" title="Register Administrative Staff">Register</a></li>
 				      <li><a href="<%=UrlHelper.base_url()%>staff/list.jsp" title="View Staff Details">Staff Details</a></li>
-				      <li><a href="<%=UrlHelper.base_url()%>complain/admin_list.jsp">Complain Details</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>complain/admin_list.jsp" title="staff complain details">Complain Details</a></li>
+				      <li><a href="<%=UrlHelper.base_url()%>leave/list.jsp" title="staff leave details">Leave Details</a></li>
 				    </ul>
 				</li>
 		       
@@ -73,7 +74,8 @@
 				    <span class="caret"></span></a>
 				    <ul class="dropdown-menu">
 				      <li><a href="<%=UrlHelper.base_url()%>instructor/register.jsp" title="Register Instructor">Register</a></li>
-		 			  <li><a href="<%=UrlHelper.base_url()%>instructor/list.jsp" title="Instructor Details">Instructor</a></li>
+		 			  <li><a href="<%=UrlHelper.base_url()%>instructor/list.jsp" title="Instructor Details">Instructor Details</a></li>
+		 			  <li><a href="<%=UrlHelper.base_url()%>leave/list.jsp" title="Instructor leave details">Leave Details</a></li>
 				    </ul>
 				</li>
 				

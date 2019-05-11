@@ -3,6 +3,7 @@ package com.gp.actions;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,15 +37,28 @@ public class UserBlackListAction extends HttpServlet {
 			ps.execute();
 			
 			HttpSession session=request.getSession();
-			String role=session.getAttribute("role").toString();
-			if(role.equals("1")) {
-				response.sendRedirect("staff/list.jsp?msg=success");
-			}else if(role.equals("2")) {
-				response.sendRedirect("student/list.jsp?msg=success");
-			}else if(role.equals("3")) {
-				response.sendRedirect("instructor/list.jsp?msg=success");
-			}
+			String roleCurrent=session.getAttribute("role").toString();//current login user role
 			
+			
+			//get changing user's role
+			sql="SELECT role FROM user WHERE id=?";
+			ps=con.prepareStatement(sql);
+			ps.setString(1,id);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				String roleUser=rs.getString("role");
+				if(roleCurrent.equals("1")) {
+					if(roleUser.equals("5")) {
+						response.sendRedirect("student/list.jsp?msg=success");
+					}else {
+						response.sendRedirect("staff/list.jsp?msg=success");
+					}
+				}else if(roleCurrent.equals("2")) {
+					response.sendRedirect("student/list.jsp?msg=success");
+				}else if(roleCurrent.equals("3")) {
+					response.sendRedirect("instructor/list.jsp?msg=success");
+				}
+			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

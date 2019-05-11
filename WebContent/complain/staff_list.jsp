@@ -92,11 +92,12 @@
 	    						con=DB.getConnection();
 	    						sql="SELECT complain.cmp_id,complain.title "+
     									"FROM complain,staff,user "+
-    									"WHERE complain.emp_id=staff.emp_id AND complain.emp_id=user.emp_id AND view=?  AND user.id=?"+
+    									"WHERE complain.emp_id=staff.emp_id AND complain.emp_id=user.emp_id AND (view=? OR view=?)  AND user.id=?"+
     									"ORDER BY date,cmp_id  DESC";
 	    						ps=con.prepareStatement(sql);
 	    						ps.setString(1,"0");
-	    						ps.setString(2,userId);
+	    						ps.setString(2, "1");
+	    						ps.setString(3,userId);
 	    						rs=ps.executeQuery();
 	    						while(rs.next()){
 	    							String cmpId=rs.getString("cmp_id");
