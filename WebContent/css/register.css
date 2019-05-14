@@ -60,6 +60,10 @@ select#soflow-color {
 	display: inline-block;
 }
 
+#transmission{
+	margin-left: 50px;
+}
+
 /*Register student(student/register.jsp)*/
 #oneLineBlock{
 	display: inline-block;

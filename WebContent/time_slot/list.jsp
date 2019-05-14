@@ -1,3 +1,4 @@
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="com.gp.service.DB"%>
@@ -8,13 +9,12 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Category Details</title>
+	<title>Time Slot</title>
 	<!-- Head part -->
 	<%@ include file="../WEB-INF/templates/head.jsp" %>
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/list.css">
-	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/search.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -48,58 +48,34 @@
 	    		<div class="container">
 	    			<div class="jumbotron">
 	    			
-	    			<nav class="navbar navbar-default">
-	    					
-	    					<form class="navbar-form navbar-left" action="/action_page.php">
-			    					
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="search" id="tableInput">
-									<div class="input-group-btn">
-										<button class="btn btn-default" type="submit">
-											   <i class="glyphicon glyphicon-search"></i>
-										</button>
-									</div>
-								</div>
-							</form> 
-	    			</nav>
-	    			
 	    				<table class="table">
-	    					<caption>Vehicle Category Details</caption>
-	    					<thead>
+	    					<caption>Time Slot Details(24 hrs)</caption>
 	    					<tr>
-	    						<th>Category</th>
-	    						<%
-	    						String role2=session.getAttribute("role").toString();
-	    						if(role2.equals("3")){
-	    						%>
+	    						<th>Start Time</th>
+	    						<th>Finish Time</th>
 	    						<th>Option</th>
-	    						<%} %>
 	    					</tr>
-	    					</thead>
 	    					
-	    					<tbody id="searchTable">
 	    						<%
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT * FROM vehicle_category";
+	    						String sql="SELECT * FROM time_slot ";
 	    						Statement st=con.createStatement();
 	    						ResultSet rs=st.executeQuery(sql);
 	    						while(rs.next()){
-	    							String id=rs.getString("cat_id");
-	    							String category=rs.getString("category");						
+	    							String tId=rs.getString("tim_slot_id");
+	    							String sTime=rs.getString("s_time");
+	    							String fTime=rs.getString("f_time");
+	    							
 	    						%>
 	    						<tr>
-	    						<td><%=category %></td>
-	    						<%
-	    						if(role2.equals("3")){
-	    						%>
+	    						<td><%=sTime%></td>
+	    						<td><%=fTime %></td>
 	    						<td>
-		    						<a href="<%=UrlHelper.base_url() %>vehicle_category/edit.jsp?id=<%=id %>" class="btn btn-warning"><i class="fas fa-edit" title="Edit"></i></a>
-									<a href="<%=UrlHelper.base_url() %>vehiclecategory_delete_action?id=<%=id %>" class="btn btn-danger"><i class="fas fa-trash" title="Delete"></i></a>					
+	    							<a href="<%=UrlHelper.base_url() %>time_slot/edit.jsp?id=<%=tId %>" class="btn btn-warning"><i class="fas fa-edit" title="edit"></i></a>
+	    							<a href="<%=UrlHelper.base_url() %>time_slot/delete.jsp?id=<%=tId %>" class="btn btn-danger"><i class="fas fa-trash" title="delete"></i></a>
 	    						</td>
-	    						<%} %>
 	    						</tr>
 	    						<%} %>
-	    					</tbody>
 	    				</table>
 	    			
 	    			</div>

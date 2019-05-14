@@ -22,7 +22,7 @@
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-2 sidenav">
-
+    
      <!-- SlideBar Part-->
      <%@ include file="../WEB-INF/templates/slidebar.jsp" %>
       

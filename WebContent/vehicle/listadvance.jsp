@@ -54,11 +54,20 @@
 	    					<caption>Vehicle Details</caption>
 	    						<%
 	    						String vehId=request.getParameter("id");
+	    						String isInsId=request.getParameter("isInsId");
 	    									
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT brand,model,number,category,transmission,fuel_type,document_lic,name "+
-	    								   "FROM vehicle,vehicle_category,instructor,staff  "+
-	    								   "WHERE vehicle.cat_id=vehicle_category.cat_id AND  instructor.ins_id=vehicle.ins_id AND  instructor.emp_id=staff.emp_id AND vehicle.veh_id=?";
+	    						
+	    						String sql="";
+	    						if(isInsId.equals("1")){
+		    						sql="SELECT brand,model,number,category,transmission,fuel_type,document_lic,name "+
+		    								   "FROM vehicle,vehicle_category,instructor,staff  "+
+		    								   "WHERE vehicle.cat_id=vehicle_category.cat_id AND  instructor.ins_id=vehicle.ins_id AND  instructor.emp_id=staff.emp_id AND vehicle.veh_id=?";
+	    						}else{
+	    							sql="SELECT brand,model,number,category,transmission,fuel_type,document_lic "+
+		    								   "FROM vehicle,vehicle_category "+
+		    								   "WHERE vehicle.cat_id=vehicle_category.cat_id  AND vehicle.veh_id=?";
+	    						}
 	    						PreparedStatement ps=con.prepareStatement(sql);
 	    						ps.setString(1,vehId);
 	    					
@@ -72,7 +81,10 @@
 	    							String transmission=rs.getString("transmission");
 	    							String fuelType=rs.getString("fuel_type");
 	    							String lic=rs.getString("document_lic");
-	    							String instructor=rs.getString("name");
+	    							String instructor="Not Assign Instructor";
+	    							if(isInsId.equals("1")){
+	    								instructor=rs.getString("name");
+	    							}
 	    							
 	    							if(transmission.equals("1")){
 	    								transmission="Manual";

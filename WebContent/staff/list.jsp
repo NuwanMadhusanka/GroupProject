@@ -14,6 +14,7 @@
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/list.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/search.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -52,7 +53,7 @@
 	    					<form class="navbar-form navbar-left" action="/action_page.php">
 			    					
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="user name">
+									<input type="text" class="form-control" placeholder="search" id="tableInput">
 									<div class="input-group-btn">
 										<button class="btn btn-default" type="submit">
 											   <i class="glyphicon glyphicon-search"></i>
@@ -65,16 +66,18 @@
 	    			
 	    				<table class="table">
 	    					<caption>Staff Details</caption>
+	    					<thead>
 	    					<tr>
 	    						<th>Name</th>
 	    						<th>Role</th>
 	    						<th>Status</th>
 	    						<th>Option</th>
 	    					</tr>
-	    					
+	    					</thead>
+	    					<tbody id="searchTable">
 	    						<%
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT user.id,user.role,user.status,staff.name FROM staff,user WHERE staff.emp_id=user.emp_id ORDER BY user.role ASC";
+	    						String sql="SELECT user.id,user.role,user.status,staff.name FROM staff,user WHERE staff.emp_id=user.emp_id ORDER BY user.status DESC";
 	    						Statement st=con.createStatement();
 	    						ResultSet rs=st.executeQuery(sql);
 	    						while(rs.next()){
@@ -84,9 +87,9 @@
 	    							String status=rs.getString("status");
 	    							
 	    							if(role.equals("2")){
-	    								role="Admin Satff(S)";
+	    								role="Admin Staff(S)";
 	    							}else if(role.equals("3")){
-	    								role="Admin Satff(I)";
+	    								role="Admin Staff(I)";
 	    							}else{
 	    								role="Instructor";
 	    							}
@@ -119,6 +122,7 @@
 	    						</td>
 	    						</tr>
 	    						<%} %>
+	    						</tbody>
 	    				</table>
 	    			
 	    			</div>

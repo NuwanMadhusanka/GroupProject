@@ -14,6 +14,7 @@
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/list.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/search.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -71,7 +72,7 @@
 									  </select>
 			    					
 									  <div class="input-group">
-									    <input type="text" class="form-control" placeholder="user name">
+									    <input type="text" class="form-control" placeholder="search" id="tableInput">
 									    <div class="input-group-btn">
 									      <button class="btn btn-default" type="submit">
 									        <i class="glyphicon glyphicon-search"></i>
@@ -98,23 +99,25 @@
 	    				</nav>
 	    				
 	    				<table class="table">
+	    					<thead>
 	    					<tr>
 	    						<th>Date:</th>
 	    						<th>Name:</th>
 	    						<th>Reason</th>
 	    					</tr>
-	    					
+	    					</thead>
+	    					<tbody id="searchTable">
 	    					<%
 	    					
 	    					Connection con=DB.getConnection();
 	    					String sql="";
 	    					if(role.equals("1")){
 	    						sql="SELECT `leave`.reason,`leave`.date,`staff`.name FROM `leave`,`staff`,`user` WHERE "+
-	    							"`leave`.emp_id=`staff`.emp_id AND `leave`.emp_id=`user`.emp_id AND (`user`.role=2 OR `user`.role=3)";
+	    							"`leave`.emp_id=`staff`.emp_id AND `leave`.emp_id=`user`.emp_id AND (`user`.role=2 OR `user`.role=3) AND user.status=1";
 	    					}
 	    					if(role.equals("3")){
 	    						sql="SELECT `leave`.reason,`leave`.date,`staff`.name FROM `leave`,`staff`,`user` WHERE "+
-		    						"`leave`.emp_id=`staff`.emp_id AND `leave`.emp_id=`user`.emp_id AND `user`.role=4";
+		    						"`leave`.emp_id=`staff`.emp_id AND `leave`.emp_id=`user`.emp_id AND `user`.role=4 AND user.status=1";
 	    					}
 	    					Statement st=con.createStatement();
 	    					ResultSet rs=st.executeQuery(sql);
@@ -130,6 +133,7 @@
 	    						<td><%=reason %></td>
 	    					</tr>
 	    					<%} %>
+	    					</tbody>
 	    				</table>
 	    				
 	    			</div>

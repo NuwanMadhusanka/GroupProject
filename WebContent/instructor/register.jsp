@@ -46,7 +46,7 @@
 	    			<h3>Registration Form</h3>
 	    		</div>
     			
-    			<form action="../instructorstaff_register_action" method="post">
+    			<form action="../instructorstaff_register_action" method="post" name="myForm" onsubmit="return validateFrom()">
 				  <div class="form-group">
 				    <label for="usr">Name:</label>
 				    <input type="text" class="form-control" name="name">

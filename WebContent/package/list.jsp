@@ -14,6 +14,7 @@
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/list.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/search.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -47,15 +48,33 @@
 	    		<div class="container">
 	    			<div class="jumbotron">
 	    			
+	    				<nav class="navbar navbar-default">
+	    					
+	    					<form class="navbar-form navbar-left" action="/action_page.php">
+			    					
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="search" id="tableInput">
+									<div class="input-group-btn">
+										<button class="btn btn-default" type="submit">
+											   <i class="glyphicon glyphicon-search"></i>
+										</button>
+									</div>
+								</div>
+							</form> 
+	    				</nav>
+	    			
 	    				<table class="table">
 	    					<caption>Package Details</caption>
-	    					<tr>
+	    					<thead>
+	    					<tr class="info">
 	    						<th>Title</th>
 	    						<th>Vehicle Type</th>
 	    						<th>Status</th>
 	    						<th>Option</th>
 	    					</tr>
+	    					</thead>
 	    					
+	    					<tbody id="searchTable">
 	    						<%
 	    						Connection con=DB.getConnection();
 	    						String sql="SELECT pac_id,title,category,status FROM package,vehicle_category WHERE package.cat_id=vehicle_category.cat_id";
@@ -93,6 +112,7 @@
 	    						</td>
 	    						</tr>
 	    						<%} %>
+	    						</tbody>
 	    				</table>
 	    			
 	    			</div>

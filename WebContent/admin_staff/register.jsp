@@ -49,7 +49,7 @@
 		    			
 		    		</div>
 	    		
-	    			<form action="../adminstaff_register_action" method="post">
+	    			<form action="../adminstaff_register_action" method="post" name="myForm" onsubmit="return validateFrom()">
 					  <div class="form-group">
 					    <label for="usr">Name:</label>
 					    <input type="text" class="form-control" name="name" placeholder="Full Name With Initials">

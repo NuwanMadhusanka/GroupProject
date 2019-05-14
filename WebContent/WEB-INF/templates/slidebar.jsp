@@ -99,6 +99,19 @@
 				     	<li><a href="<%=UrlHelper.base_url()%>complain/staff_list.jsp">Complain Details</a></li>
 				    </ul>
 				</li>
+				
+				<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Time Table
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Time Table</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/add.jsp">Add Lesson</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>time_slot/list.jsp">Time Slot</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>time_slot/add.jsp">Add Time Slot</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Path</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Add Path</a></li>
+				    </ul>
+				</li>
 		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("4")){%>
 		 

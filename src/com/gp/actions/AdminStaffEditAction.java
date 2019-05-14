@@ -105,7 +105,7 @@ public class AdminStaffEditAction extends HttpServlet {
 							ps.setString(1, name);
 							ps.setString(2, nic);
 							ps.setString(3, tel);
-							ps.setString(4, address);
+							ps.setString( 4, address);
 							ps.setString(5,empId);
 							
 							ps.executeUpdate();
@@ -118,14 +118,14 @@ public class AdminStaffEditAction extends HttpServlet {
 							
 							ps.executeUpdate();
 														
-							response.sendRedirect("staff/list.jsp?msg=success");
+							response.sendRedirect("staff/listadvance.jsp?msg=success&id="+id);
 						}
 						
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				}else {
-					response.sendRedirect("staff/list.jsp?msg="+error);
+					response.sendRedirect("staff/listadvance.jsp?msg="+error+"&id="+id);
 				}
 	}
 

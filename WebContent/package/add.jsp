@@ -53,7 +53,7 @@
 		    			
 		    		</div>
 	    		
-	    			<form action="../package_add_action" method="post">
+	    			<form action="../package_add_action" method="post" name="myForm" onsubmit="return validateForm()">
 					  <div class="form-group">
 					    <label for="usr">Title:</label>
 					    <input type="text" class="form-control" name="title" >
@@ -77,26 +77,11 @@
 						  </select>
 					  </div>
 						
-					  <label>Number of Lessons:</label>
-					  <div id="oneLine">
-						  <div class="checkbox">
-							  <label><input type="checkbox" value="1" onclick="activeManual()" name="checkManual">Manual</label>
-						  </div>
-						  <div class="form-group">
-						    <label for="num">Manual:</label>
-						    <input type="text" class="form-control" name="manual" readonly="readonly" id="manual">
-						  </div>
+					  
+					  <div id="transmission">
+						  
 					  </div>
 					  
-					  <div id="oneLine">
-						  <div class="checkbox">
-							  <label><input type="checkbox" value="2" onclick="activeAuto()" name="checkAuto">Auto</label>
-						  </div>
-						  <div class="form-group">
-						    <label for="num">Auto:</label>
-						    <input type="text" class="form-control" name="auto" readonly="readonly" id="auto">
-						  </div>
-					  </div>
 					
 					  <div class="form-group">
 					    <label for="num">Price(RS):</label>

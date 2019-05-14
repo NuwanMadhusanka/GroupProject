@@ -57,7 +57,7 @@
 	    					
 	    						<%
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT * FROM complain WHERE view=? ORDER BY date,cmp_id  DESC ";
+	    						String sql="SELECT complain.cmp_id,complain.title FROM complain,user WHERE complain.emp_id=user.emp_id AND user.status=1 AND view=?  ORDER BY date,cmp_id  DESC ";
 	    						PreparedStatement ps=con.prepareStatement(sql);
 	    						ps.setString(1,"0");
 	    						ResultSet rs=ps.executeQuery();
@@ -88,7 +88,7 @@
 	    					
 	    						<%
 	    						con=DB.getConnection();
-	    						sql="SELECT * FROM complain WHERE view=? ORDER BY date,cmp_id  DESC ";
+	    						sql="SELECT complain.cmp_id,complain.title FROM complain,user WHERE complain.emp_id=user.emp_id AND user.status=1 AND view=? ORDER BY date,cmp_id  DESC ";
 	    						ps=con.prepareStatement(sql);
 	    						ps.setString(1,"1");
 	    						rs=ps.executeQuery();

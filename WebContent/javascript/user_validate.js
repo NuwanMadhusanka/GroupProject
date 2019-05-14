@@ -11,6 +11,8 @@ function validateFrom() {
 	var password=document.forms['myForm']['password'].value;
 	var nic=document.forms['myForm']['nic'].value;
 
+
+
 	//validate data
 	var error="";
 	if(name==""){
@@ -28,6 +30,10 @@ function validateFrom() {
 	if (nic=="") {
 		error+="NIC must be filled out! \n";
 	}
+	if(email==""){
+		error+="Email must be filled out!\n "
+	}
+
 
 
 	if (error=="") {

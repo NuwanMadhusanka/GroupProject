@@ -139,7 +139,7 @@
 	    						<%} %>
 	    				</table>
 	    				<%if(!roleNum.equals("4")){ %>
-	    					<a href="<%=UrlHelper.base_url() %>instructor/edit.jsp?id=<%=id %>" class="btn btn-default">Edit</a>
+	    					<a href="<%=UrlHelper.base_url() %>admin_staff/edit.jsp?id=<%=id %>" class="btn btn-default">Edit</a>
 	    				<%} %>
 	    			</div>
 	    		</div>
