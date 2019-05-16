@@ -86,6 +86,7 @@
 	    							String role=rs.getString("role");
 	    							String status=rs.getString("status");
 	    							
+	    							
 	    							if(role.equals("2")){
 	    								role="Admin Staff(S)";
 	    							}else if(role.equals("3")){
@@ -110,10 +111,12 @@
 	    						<td>
 		    						<a href="listadvance.jsp?id=<%=id %>" class="btn btn-info"><i class="fas fa-eye" title="Advanced"></i></a>
 									<%
-									if(status.equals("1")){
-										out.println("<a href='../user_blcklist_action?id="+id+"' class='btn btn-danger' title='BlackList' ><i class='fas fa-window-close'></i></a>");
-									}else{
-										out.println("<a href='../user_active_action?id="+id+"' class='btn btn-success' title='Membership'><i class='fas fa-check'></i></a>");
+									if(!role.equals("Instructor")){
+										if(status.equals("1")){
+											out.println("<a href='../user_blcklist_action?id="+id+"' class='btn btn-danger' title='BlackList' ><i class='fas fa-window-close'></i></a>");
+										}else{
+											out.println("<a href='../user_active_action?id="+id+"' class='btn btn-success' title='Membership'><i class='fas fa-check'></i></a>");
+										}
 									}
 									%>
 									<%if(!role.equals("Instructor")){ %>

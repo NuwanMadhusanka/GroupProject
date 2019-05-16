@@ -66,7 +66,12 @@
 	    						<th>Package</th>
 	    						<th>Path</th>
 	    						<th>Num-Stu</th>
+	    						<%
+	    						String role=session.getAttribute("role").toString();
+	    						if(role!=null && role.equals("3")){
+	    						%>
 	    						<th>Option</th>
+	    						<%} %>
 	    					</tr>
 	    					<%
 	    					ArrayList<String> dayName=new ArrayList<>();
@@ -98,15 +103,10 @@
 	    				
 	    					
 	    					for(int x=0 ; x<7 ; x++){
-	    						String color="";
-	    						if(x%2 == 0){
-	    							color="C9FFE5";
-	    						}else{
-	    							color="99FF66";
-	    						}
+	    						
 	    					%>
 	    					
-	    					<tr bgcolor="<%=color%>">
+	    					<tr>
 	    						
 	    						<td rowspan="<%=dayArray.get(x)%>"><%=dayName.get(x) %></td>
 	    						<%
@@ -153,9 +153,11 @@
 	    						<td><%=title %></td>
 	    						<td>p</td>
 	    						<td><%=numStu %></td>
+	    						<%if(role!=null && role.equals("3")){ %>
 	    						<td>
 	    							<a href="<%=UrlHelper.base_url() %>lesson_delete_action?id=<%=lesId%>" class="btn btn-danger"  title="Delete"><i class="fas fa-trash"></i></a>
 	    						</td>
+	    						<%} %>
 	    						<%}if(flag){ %>
 	    							<td>-</td>
 		    						<td>-</td>
@@ -163,7 +165,9 @@
 		    						<td>-</td>
 		    						<td>-</td>
 		    						<td>-</td>
+		    						<%if(role!=null && role.equals("3")) {%>
 		    						<td>-</td>
+		    						<%} %>
 	    						<%} %>
 	    					</tr>
 	    					<%} %>

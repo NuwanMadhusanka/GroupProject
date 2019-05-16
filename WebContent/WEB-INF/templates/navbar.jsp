@@ -6,7 +6,7 @@
 					 
 					 	<%
 					 	String role1=session.getAttribute("role").toString();
-					 	if(role1.equals("1")){
+					 	if(role1!=null && role1.equals("1")){
 					 	%>
 					 		<div class="col-md-2">
 						 		<div class="dropdown">

@@ -49,11 +49,11 @@
     		
 	    		<div class="jumbotron">
 	    			<div id="title">
-		    			<h3> Form</h3>
+		    			<h3>Time Slot Update</h3>
 		    			
 		    		</div>
 	    			<%
-	    			String tId=request.getParameter("tId");//time slot id
+	    			String tId=request.getParameter("id");//time slot id
 	    			Connection con=DB.getConnection();
 	    			String sql="SELECT * FROM time_slot WHERE tim_slot_id=?";
 	    			PreparedStatement ps=con.prepareStatement(sql);
@@ -63,7 +63,7 @@
 	    				String sTime=rs.getString("s_time");
 	    				String fTime=rs.getString("f_time");
 	    			%>
-	    			<form action="../time_slot_add_action" method="post" name="myForm" onsubmit="return validateFrom()">
+	    			<form action="../time_slot_edit_action" method="post" name="myForm" onsubmit="return validateFrom()">
 					  <div class="form-group">
 					    <label for="usr">Start Time:</label>
 					    <input type="time" name="sTime" value="<%=sTime%>"/>

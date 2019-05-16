@@ -67,6 +67,7 @@
 				     	<li><a href="<%=UrlHelper.base_url()%>complain/staff_list.jsp">Complain Details</a></li>
 				    </ul>
 				</li>
+				<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Time Table</a></li>
 		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("3")){%>
 		 		<li class="dropdown">
@@ -114,8 +115,17 @@
 				</li>
 		 		
 		 <%}else if(roleObj1!=null && roleObj1.toString().equals("4")){%>
-		 
+		 		<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Time Table</a></li>
 		 <%}else{%>
-		 	
+		 		
+		 		<li class="dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lessons(Trial)
+				    <span class="caret"></span></a>
+				    <ul class="dropdown-menu">
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/list.jsp">Time Table</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/booking.jsp">Reserve Lesson</a></li>
+				     	<li><a href="<%=UrlHelper.base_url()%>lesson/booking_list.jsp">Reserved Lesson</a></li>
+				    </ul>
+				</li>
 		 <%} %>
       </ul><br>

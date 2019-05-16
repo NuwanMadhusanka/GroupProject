@@ -116,9 +116,10 @@ public class StudentRegisterAction extends HttpServlet {
 						ps.executeUpdate();
 						
 						//get Student id
-						sql="SELECT stu_id FROM student WHERE nic=?";
+						sql="SELECT stu_id FROM student WHERE nic=? AND name=?";
 						ps=con.prepareStatement(sql);
 						ps.setString(1,nic);
+						ps.setString(2,name);
 						ResultSet rs=ps.executeQuery();
 						
 						if(rs.next()) {
@@ -135,11 +136,13 @@ public class StudentRegisterAction extends HttpServlet {
 							
 							ps.executeUpdate(); 
 							
+							System.out.println("Hello");
 							//insert data to student_package table
 							sql="INSERT INTO student_package (stu_id,pac_id,transmission,join_date) VALUES (?,?,?,now())";
 							ps=con.prepareStatement(sql);
 							ps.setString(1,stuId);
 							for(int i=0 ; i<pacId.size() ; i++) {
+								System.out.println("Hello1");
 								ps.setString(2,pacId.get(i));
 								ps.setString(3,transmission.get(i));
 								ps.execute();

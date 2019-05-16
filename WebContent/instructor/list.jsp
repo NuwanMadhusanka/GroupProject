@@ -14,6 +14,7 @@
 	<%@ include file="../WEB-INF/templates/header.jsp" %>
 	<link rel="stylesheet" type="text/css" href="../css/common.css">
 	<link rel="stylesheet" type="text/css" href="../css/list.css">
+	<script type="text/javascript" src="<%=UrlHelper.base_url()%>javascript/instructor_blacklist_validate.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -57,7 +58,7 @@
 	    					
 	    						<%
 	    						Connection con=DB.getConnection();
-	    						String sql="SELECT user.id,user.status,staff.name FROM staff,user WHERE staff.emp_id=user.emp_id AND role=4";
+	    						String sql="SELECT user.id,user.status,staff.name FROM staff,user WHERE staff.emp_id=user.emp_id AND role=4 ORDER BY status DESC";
 	    						Statement st=con.createStatement();
 	    						ResultSet rs=st.executeQuery(sql);
 	    						while(rs.next()){
@@ -82,7 +83,7 @@
 		    						<a href="listadvance.jsp?id=<%=id %>" class="btn btn-info"><i class="fas fa-eye" title="Advanced"></i></a>
 									<%
 									if(status.equals("1")){
-										out.println("<a href='../user_blcklist_action?id="+id+"' class='btn btn-danger' title='BlackList' ><i class='fas fa-window-close'></i></a>");
+										out.println("<a href='../user_blcklist_action?id="+id+"' class='btn btn-danger' title='BlackList' id='blackListBtn' data-confirm='If you blacklist this user, It may be \n Remove lesson regarding to that instructor \n Remove vehicle-instructor assign\nAre you want blacklist this instructor?'><i class='fas fa-window-close'></i></a>");
 									}else{
 										out.println("<a href='../user_active_action?id="+id+"' class='btn btn-success' title='Membership'><i class='fas fa-check'></i></a>");
 									}
